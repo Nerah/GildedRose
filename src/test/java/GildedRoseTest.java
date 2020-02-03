@@ -1,6 +1,7 @@
 import static org.junit.Assert.*;
 
 import factory.AbstractItem;
+import factory.BackstagePasses;
 import factory.Item;
 import org.junit.Test;
 
@@ -131,11 +132,11 @@ public class GildedRoseTest {
 	}
 
 	private boolean hasReachCloseDate(Item item) {
-		return item.sellIn < 10;
+		return item.sellIn < BackstagePasses.CLOSE_DATE;
 	}
 
 	private boolean hasReachImminentDate(Item item) {
-		return item.sellIn < 5;
+		return item.sellIn < BackstagePasses.IMMINENT_DATE;
 	}
 
 }

@@ -13,6 +13,7 @@ public class ItemsStore {
         this.store = new HashMap<>();
         ItemFactory itemFactory = new ItemFactory();
 
+        // store the name of the item (String) with its corresponding instance
         for (Item item : store) {
             this.store.put(item.name, itemFactory.getInstance(item));
         }

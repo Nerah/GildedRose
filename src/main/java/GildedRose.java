@@ -1,3 +1,4 @@
+import exceptions.ItemNotFoundInShopException;
 import factory.Item;
 
 import java.util.ArrayList;
@@ -14,7 +15,7 @@ public class GildedRose {
     }
 
     public void initListItems() {
-        items = new ArrayList<Item>();
+        items = new ArrayList<>();
         items.add(new Item("Sulfuras, Hand of Ragnaros", 0, 80));
         items.add(new Item("+5 Dexterity Vest", 10, 20));
         items.add(new Item("Elixir of the Mongoose", 5, 7));
@@ -29,13 +30,13 @@ public class GildedRose {
         }
     }
 
-    public Item get(String key) {
+    public Item get(String key) throws Exception {
         Optional<Item> optional = items.stream().filter(item -> item.getName().equals(key)).findFirst();
         if(optional.isPresent()) {
             return optional.get();
         }
         else {
-            throw new IllegalStateException("not found in shop");
+            throw new ItemNotFoundInShopException(key);
         }
     }
 
